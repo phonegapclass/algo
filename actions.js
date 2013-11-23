@@ -23,14 +23,15 @@ function initialize(){
     },false);
 }
 function geoloc(){
-    var obj = {lat:null,lng:null};
+    var la;
+    var lo;
     navigator.geolocation.getCurrentPosition(function(p){
-        obj.lat = p.coords.latitude;
-        alert(p.coords.latitude);
-        obj.lng = p.coords.longitude;
+        la = p.coords.latitude;
+        lo.lng = p.coords.longitude;
     },function(err){
         alert(err.code);
     });
+    var obj = {lat:la,lng:lo};
     alert(obj.lat+'-'+obj.lng);
     return obj;
 }
