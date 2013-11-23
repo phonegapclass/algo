@@ -26,6 +26,7 @@ function geoloc(){
     var obj = {lat:null,lng:null};
     navigator.geolocation.getCurrentPosition(function(p){
         obj.lat = p.coords.latitude;
+        alert(p.coords.latitude);
         obj.lng = p.coords.longitude;
     },function(err){
         alert(err.code);
