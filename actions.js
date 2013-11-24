@@ -2,38 +2,30 @@ var rango = {latitud:100,longitud:100};
 
 function initialize(){
     document.addEventListener("deviceready",function(){
-        alert();
-        //crearTabla();
-        //obtenerRegistros();
-        var lat = geoloc().lat;
-        var lng = geoloc().lng;
-        var latlng = new google.maps.LatLng(lat, lng);
-        var mapOptions = {
-            center: latlng,
-            zoom: 10,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-        var marker = new google.maps.Marker({
-            position: latlng,
-            map: map,
-            title:"Hello World!"
+        navigator.geolocation.getCurrentPosition(function(p){
+            var lat = p.coords.latitude;
+            var lng = p.coords.longitude;
+            //crearTabla();
+            //obtenerRegistros();
+            var latlng = new google.maps.LatLng(lat, lng);
+            var mapOptions = {
+                center: latlng,
+                zoom: 10,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                title:"Hello World!"
+            });
+            //locazador(lat,lng);
+        },function(err){
+            alert(err.code);
         });
-        //locazador(lat,lng);
     },false);
 }
 var obj = {lat:null,lng:null};
-function geoloc(){
-    
-    navigator.geolocation.getCurrentPosition(function(p){
-        obj.lat = p.coords.latitude;
-        obj.lng = p.coords.longitude;
-    },function(err){
-        alert(err.code);
-    });
-    alert(obj.lat+'-'+obj.lng);
-    return obj;
-}
 /*function accesoDB(){
     var db = window.openDatabase("lugares","0.1","Lugares",200000);
     return db;
