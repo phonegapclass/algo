@@ -29,7 +29,7 @@ function geoloc(){
     },function(err){
         alert(err.code);
     });
-    var obj = {lat:la,lng:lo};
+    obj = {lat:la,lng:lo};
     alert(obj.lat+'-'+obj.lng);
     return obj;
 }
