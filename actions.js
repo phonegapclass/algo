@@ -23,11 +23,9 @@ function initialize(){
     },false);
 }
 function geoloc(){
-    var la;
-    var lo;
     navigator.geolocation.getCurrentPosition(function(p){
         la = p.coords.latitude;
-        lo.lng = p.coords.longitude;
+        lo = p.coords.longitude;
     },function(err){
         alert(err.code);
     });
