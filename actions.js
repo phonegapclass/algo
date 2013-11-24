@@ -22,14 +22,15 @@ function initialize(){
         //locazador(lat,lng);
     },false);
 }
+var obj = {lat:null,lng:null};
 function geoloc(){
+    
     navigator.geolocation.getCurrentPosition(function(p){
-        la = p.coords.latitude;
-        lo = p.coords.longitude;
+        obj.lat = p.coords.latitude;
+        obj.lng = p.coords.longitude;
     },function(err){
         alert(err.code);
     });
-    obj = {lat:la,lng:lo};
     alert(obj.lat+'-'+obj.lng);
     return obj;
 }
